@@ -1,24 +1,30 @@
 import axios from "axios";
 
-//Base URL of profile functions
-const BASE_URL_OF_PROFILE = "http://localhost:8080/profiles";
+// ✅ Use environment variable so it works in both local and deployed environments
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
-//Create profile
+// 🔎 Debug print (you can remove later)
+console.log("✅ Profile API Base URL:", API_BASE_URL);
+
+// ✅ Prefix for profiles endpoint
+const BASE_URL_OF_PROFILE = `${API_BASE_URL}/profiles`;
+
+// Create profile
 export const createProfile = (id, profile) => {
-  return axios.post(BASE_URL_OF_PROFILE + "/" + id, profile);
+  return axios.post(`${BASE_URL_OF_PROFILE}/${id}`, profile);
 };
 
-//Get profile information
+// Get profile information
 export const listEmployeeProfile = (id) => {
-  return axios.get(BASE_URL_OF_PROFILE + "/employee/" + id);
+  return axios.get(`${BASE_URL_OF_PROFILE}/employee/${id}`);
 };
 
-//Update profile
+// Update profile
 export const updateEmployeeProfile = (id, profile) => {
-  return axios.put(BASE_URL_OF_PROFILE + "/employee/" + id, profile);
+  return axios.put(`${BASE_URL_OF_PROFILE}/employee/${id}`, profile);
 };
 
-//Delete Profile
+// Delete profile
 export const deleteEmployeeProfile = (id) => {
-  return axios.delete(BASE_URL_OF_PROFILE + "/" + id);
+  return axios.delete(`${BASE_URL_OF_PROFILE}/${id}`);
 };
