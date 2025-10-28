@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // ✅ Use environment variable (set in Vercel and .env.local)
-const API_BASE_URL = process.env.REACT_APP_API_URL;
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 // 🔎 Debug print (only for checking, can remove later)
 console.log("✅ API Base URL being used:", API_BASE_URL);
