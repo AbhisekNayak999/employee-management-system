@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // ✅ Use environment variable so it works in both local and deployed environments
-const API_BASE_URL = process.env.REACT_APP_API_URL;
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 // 🔎 Debug print (you can remove later)
 console.log("✅ Profile API Base URL:", API_BASE_URL);
