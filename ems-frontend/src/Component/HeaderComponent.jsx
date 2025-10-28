@@ -40,12 +40,16 @@ const HeaderComponent = () => {
         <div className="container-fluid d-flex justify-content-between align-items-center">
           
           {/* === Left: EMS Logo + Title === */}
-          <a className="navbar-brand fw-bold fs-4 d-flex align-items-center" href="/home">
+          <Link
+            to="/home"
+            className="navbar-brand fw-bold fs-4 d-flex align-items-center"
+            onClick={() => setIsOpen(false)}
+          >
             <span className="bg-light text-dark rounded-circle px-3 py-2 me-2 shadow-sm">
               EMS
             </span>
             <span>Employee Management System</span>
-          </a>
+          </Link>
 
           {/* === Right: Hamburger Menu === */}
           <div
