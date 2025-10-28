@@ -1,21 +1,17 @@
 # ============
-# Build Stage
+# Build Stage (Java 21)
 # ============
-FROM maven:3.9.5-eclipse-temurin-17 AS build
+FROM maven:3.9.5-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copy pom.xml and download dependencies
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
-# Copy source code
 COPY src ./src
-
-# Package application
 RUN mvn clean package -DskipTests
 
 # ============
-# Run Stage
+# Run Stage (Java 21)
 # ============
 FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
