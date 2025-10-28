@@ -49,7 +49,7 @@ const ListEmployeeComponent = () => {
     const status = {};
     for (const emp of employeeList) {
       try {
-        const res = await axios.get(`http://localhost:8080/profiles/exists/${emp.id}`);
+        const res = await axios.get(`${API_BASE_URL}/profiles/exists/${emp.id}`);
         status[emp.id] = res.data; // true or false
       } catch (err) {
         console.error(`Error checking profile for employee ${emp.id}`, err);
