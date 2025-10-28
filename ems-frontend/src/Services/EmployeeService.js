@@ -1,38 +1,35 @@
 import axios from "axios";
 
-//Base url of our spring boot project
-const REST_API_BASE_URL = "http://localhost:8080/employee";
+// ✅ Use environment variable (set in Vercel and .env.local)
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
-//Get all the employees mapping
+// 🔎 Debug print (only for checking, can remove later)
+console.log("✅ API Base URL being used:", API_BASE_URL);
+
+// ✅ Always include '/employee' prefix
+const EMPLOYEE_BASE_URL = `${API_BASE_URL}/employee`;
+
+// Get all employees
 export const listEmployees = () => {
-  //Format for gettign data from database to react json object using axios
-  //axios.get(rest_api_url)
-  return axios.get(REST_API_BASE_URL + "/getAllEmployee");
+  return axios.get(`${EMPLOYEE_BASE_URL}/getAllEmployee`);
 };
 
-//Add new employee
+// Add new employee
 export const createEmployee = (employee) => {
-  //Format for sending json to java spring:
-  //axios.post(rest_api_url, json_object);
-  return axios.post(REST_API_BASE_URL + "/addEmployee", employee);
+  return axios.post(`${EMPLOYEE_BASE_URL}/addEmployee`, employee);
 };
 
-//Get employee by id
+// Get employee by id
 export const getEmployee = (id) => {
-  //Format for get request by id
-  //axios.get(url+ '/' + id)
-  return axios.get(REST_API_BASE_URL + "/" + id);
+  return axios.get(`${EMPLOYEE_BASE_URL}/${id}`);
 };
 
-//Update employee
+// Update employee
 export const updateEmployee = (id, employee) => {
-  //Format for put request
-  //axios.put(url_with_id, newEmplpyee object reference
-  return axios.put(REST_API_BASE_URL + "/" + id, employee);
+  return axios.put(`${EMPLOYEE_BASE_URL}/${id}`, employee);
 };
 
-//Delete employee
+// Delete employee
 export const deleteEmployee = (id) => {
-  //Format for delete request
-  return axios.delete(REST_API_BASE_URL + "/" + id);
+  return axios.delete(`${EMPLOYEE_BASE_URL}/${id}`);
 };
