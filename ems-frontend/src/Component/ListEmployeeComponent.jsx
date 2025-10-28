@@ -47,6 +47,7 @@ const ListEmployeeComponent = () => {
   //Check profile exists or not
   const checkProfiles = async (employeeList) => {
     const status = {};
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
     for (const emp of employeeList) {
       try {
         const res = await axios.get(`${API_BASE_URL}/profiles/exists/${emp.id}`);
